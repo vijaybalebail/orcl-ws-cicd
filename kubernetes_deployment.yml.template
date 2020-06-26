@@ -5,26 +5,26 @@
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  name: orcl-ws-app
+  name: usr02-ws-app
   labels:
     commit: ${WERCKER_GIT_COMMIT}
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: orcl-ws-app
+      app: usr02-ws-app
   template:
     metadata:
       labels:
-        app: orcl-ws-app
+        app: usr02-ws-app
         commit: ${WERCKER_GIT_COMMIT}
     spec:
       containers:
-      - name: orcl-ws-srv
+      - name: usr02-ws-srv
         image: ${DOCKER_REPO}:${WERCKER_GIT_COMMIT}
         ports:
-        - name: orcl-ws-srv
-          containerPort: 8080
+        - name: usr02-ws-srv
+          containerPort: 8002
           protocol: TCP
       imagePullSecrets:
       - name:  ${OKE_IMAGESECRET}
